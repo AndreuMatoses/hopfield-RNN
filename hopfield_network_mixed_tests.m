@@ -9,8 +9,8 @@ N=size(pattern,2);
 pattern_plot(pattern,{})
 
 %% Learning
-% W_default = hf_learn(pattern,'hebbian');
-W_default = hf_learn(pattern,'pseudo-inverse');
+W_default = hf_learn(pattern,'hebbian');
+% W_default = hf_learn(pattern,'pseudo-inverse');
 
 exitatory_scaling=1;
 inhibitory_scaling=1;
@@ -46,6 +46,7 @@ iter_table=accuracy_tableA;
 episodes=2000;
 for n_patA=1:n_patterns
     for n_patB=1:n_patterns
+        if n_patA ~= n_patB
         for episode=1:episodes
             
             %             pat0=partial_pattern(pattern, n_pat, n_cell);
@@ -70,11 +71,19 @@ for n_patA=1:n_patterns
                 accuracy_table(n_patA,n_patB)=accuracy_table(n_patA,n_patB)+1/episodes;
                 iter_table(n_patA,n_patB)=iter_table(n_patA,n_patB)+iter;
             end
+            if all(pat_evolution(:,:,end)==pattern(:,:,n_patA))
+                accuracy_tableA(n_patA,n_patB)=accuracy_tableA(n_patA,n_patB)+1/episodes;
+            end
+            if all(pat_evolution(:,:,end)==pattern(:,:,n_patB))
+                accuracy_tableB(n_patA,n_patB)=accuracy_tableB(n_patA,n_patB)+1/episodes;
+            end
+        end
         end
         
     end
 end
 % accuracy_table=accuracy_tableA+accuracy_tableB;
+PAifAorB = accuracy_tableA./accuracy_table;
 iter_table=iter_table./accuracy_table./episodes;
 
 %% Animate results

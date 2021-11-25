@@ -1,10 +1,12 @@
 
+% load kth_logos.mat
 % patterns must be a square matrix
 pattern_array(:,:,1) = [-1 -1 -1 -1 -1;-1 -1 1 -1 -1;-1 -1 1 -1 -1;-1 -1 1 -1 -1;1 1 1 1 1];
 pattern_array(:,:,2) = [1 1 1 1 1;-1 -1 -1 -1 1;-1 -1 -1 -1 1;-1 -1 -1 -1 1;-1 -1 -1 -1 -1];
 pattern_array(:,:,3) = [1 -1 -1 -1 -1;1 -1 -1 -1 -1;1 1 1 1 1;1 -1 -1 -1 -1;-1 -1 -1 -1 -1];
 pattern_array(:,:,4) = [-1 -1 -1 -1 -1;-1 1 -1 -1 -1;-1 1 -1 1 -1;-1 1 1 1 1;-1 -1 -1 1 -1];
 pattern_array(:,:,5) = [-1 -1 1 -1 -1;1 1 1 1 1;-1 -1 -1 -1 -1;1 -1 -1 -1 -1;-1 -1 -1 -1 1];
+%   pattern_array(:,:,1) = KTHlogo_120;
 
 % reshape it by columns (so transposed)
 

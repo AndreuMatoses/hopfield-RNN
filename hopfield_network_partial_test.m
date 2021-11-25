@@ -9,7 +9,7 @@ N=size(pattern,2);
 pattern_plot(pattern,{})
 
 %% Learning
-W_default = hf_learn(pattern,'pseudo-inverse');
+W_default = hf_learn(pattern,'hebbian');
 
 exitatory_scaling=1;
 inhibitory_scaling=1;
